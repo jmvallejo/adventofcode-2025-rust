@@ -1,7 +1,8 @@
+mod day;
 mod day1;
 
+use crate::day::load_days;
 use inquire::Select;
-use std::collections::HashMap;
 use std::io::{Write, stdout};
 
 fn clear_screen() {
@@ -13,8 +14,12 @@ fn main() {
     clear_screen();
     println!("Welcome to Advent of Code 2025!");
     println!("Select a day to continue:");
-    let days = HashMap::from([("day1", day1::run)]);
+    let days = load_days();
     let options = days.keys().cloned().collect::<Vec<&str>>();
     let selection = Select::new("Select a day:", options).prompt().unwrap();
-    days.get(selection).unwrap()();
+    let day_fn = days.get(selection);
+    match day_fn {
+        Some(day) => day.print_result(),
+        None => println!("Invalid selection"),
+    };
 }
