@@ -1,4 +1,5 @@
-use crate::day1;
+mod day1;
+
 use std::collections::HashMap;
 
 pub struct Day {
