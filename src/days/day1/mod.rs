@@ -25,7 +25,7 @@ impl Dial {
             Some('R') => 1,
             _ => 0,
         };
-        let steps_result = input[1..].parse::<i16>();
+        let steps_result = input.get(1..).unwrap_or("").parse::<i16>();
         let steps = match steps_result {
             Ok(s) => s * direction,
             Err(_) => 0,
