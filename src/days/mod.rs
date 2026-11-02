@@ -1,4 +1,5 @@
 mod day1;
+mod day2;
 
 use std::collections::HashMap;
 
@@ -21,6 +22,6 @@ impl Day {
 pub fn load_days() -> HashMap<&'static str, Day> {
     HashMap::from([
         ("day1", Day::new(day1::run, day1::print_problem)),
-        // Add more days here as needed
+        ("day2", Day::new(day2::run, day2::print_problem)),
     ])
 }
